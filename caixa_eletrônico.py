@@ -46,7 +46,7 @@ while x:
 
 	
 	elif question == 'e':
-		for i in range(bsidict(extrato)):
+		# for i in range(bsidict(extrato)):
 			# try:
 			# 	print(f"depósito: {extrato['deposito'][i]} | saque: {extrato['saque'][i]}")
 			# except:
@@ -56,11 +56,17 @@ while x:
 			# 		print(f"depósito: {extrato['deposito'][i]} | saque: ----------")
 		
 		for i in range(bsidict(extrato)):
-			if extrato['deposito'][i] == 0 and extrato['saque'] == 0:
-				print (f'depósito: ---------- | saque: ---------- ')
-			elif extrato['deposito'][i] == 0 and extrato['saque'][i]:
-				print (f'depósito: ---------- | saque: ---------- ')
+			if not extrato['deposito'][i] and not extrato['saque'] == 0:
+				print ('depósito: ---------- | saque: ---------- ')
+			
+			elif not extrato['deposito'][i] == 0:
+				print (f"depósito: ---------- | saque: {extrato['saque'][i]} ")
+			
+			elif not extrato['saque'][i]:
+				print(f"depósito: {extrato['saque'][i]} | saque: ---------- ")
 
+			else:
+				print(f"depósito: {extrato['saque'][i]} | saque: {extrato['saque'][i]} ")
 			
 				
 					
