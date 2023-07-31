@@ -11,13 +11,13 @@ menu = '''
 		sa[i]r
 --------------------------------
 '''
-
 x = True
 deposito = []
 na_conta = 0
 saque = []
 extrato = {'deposito': [], 'saque': []}
 saldo_total = 0
+
 
 while x:
 	question = input('para consultar o menu digite "m".')
@@ -46,29 +46,34 @@ while x:
 
 	
 	elif question == 'e':
-		# for i in range(bsidict(extrato)):
-			# try:
-			# 	print(f"depósito: {extrato['deposito'][i]} | saque: {extrato['saque'][i]}")
-			# except:
-			# 	try:
-			# 		print(f"depósito: ---------- | saque: {extrato['saque'][i]}")
-			# 	except:
-			# 		print(f"depósito: {extrato['deposito'][i]} | saque: ----------")
 		
-		for i in range(bsidict(extrato)):
-			if not extrato['deposito'][i] and not extrato['saque'] == 0:
-				print ('depósito: ---------- | saque: ---------- ')
-			
-			elif not extrato['deposito'][i] == 0:
-				print (f"depósito: ---------- | saque: {extrato['saque'][i]} ")
-			
-			elif not extrato['saque'][i]:
-				print(f"depósito: {extrato['saque'][i]} | saque: ---------- ")
+		# tamanho_extrato_deposito = len(extrato['deposito'])
+		# tamanho_extrato_saque = len(extrato['saque'])
+		
 
-			else:
-				print(f"depósito: {extrato['saque'][i]} | saque: {extrato['saque'][i]} ")
+		if bsidict(extrato) == 0:
+			min_to_run = 1
+		
+		else:
+			min_to_run = bsidict(extrato)
+
+		# for i in range(min_to_run):
+		# 	if bsidict(extrato) == 0:
+		# 		print ('depósito: ---------- | saque: ---------- ')
 			
-				
+		# 	elif not extrato['deposito'][i]:
+		# 		print (f"depósito: ---------- | saque: {extrato['saque'][i-1]} ")
+			
+		# 	elif not extrato['saque'][i]:
+		# 		print(f"depósito: {extrato['saque'][i-1]} | saque: ---------- ")
+
+		# 	else:
+		# 		print(f"depósito: {extrato['saque'][i]} | saque: {extrato['saque'][i]} ")
+		for i in range(min_to_run):
+			deposito_info = extrato['deposito'][i] if i < len(extrato['deposito']) else '----------'
+			saque_info = extrato['saque'][i] if i < len(extrato['saque']) else '----------'
+			print(f"depósito: {deposito_info} | saque: {saque_info}")
+	
 					
 
 	elif question == 'a':
