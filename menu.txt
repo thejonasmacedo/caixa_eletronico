@@ -2,6 +2,5 @@
 		[d]epósito
 		[s]aque
 		[e]xtrato
-		s[a]ldo
-		sa[i]r
+		sai[r]
 --------------------------------
