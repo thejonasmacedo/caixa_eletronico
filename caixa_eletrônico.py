@@ -54,12 +54,13 @@ while x:
 			deposito_info = extrato['deposito'][i] if i < len(extrato['deposito']) else '----------'
 			saque_info = extrato['saque'][i] if i < len(extrato['saque']) else '----------'
 			print(f"depósito: {deposito_info} | saque: {saque_info}")
+			print(f'Seu saldo total é igual à R${saldo_total}')
 	
 					
 
 	elif question == 'a':
 		print(f'Seu saldo total é igual à R${saldo_total}')
-
+		
 	elif question == 'i':
 		print("saindo")
 		break
