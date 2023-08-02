@@ -82,7 +82,6 @@ while x:
 	question = input('para consultar o menu digite "m".')
 	if question == 'm':
 		print(menu)
-
 					
 	elif question == 'i':
 		print("saindo...")
