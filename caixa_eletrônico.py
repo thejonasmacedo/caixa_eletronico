@@ -59,17 +59,17 @@ def sair():
 	...
 
 
-
-
-
 menu = '''
---------------------------------
-		[d]epósito
-		[s]aque
-		[e]xtrato
-		sai[r]
---------------------------------
+-----------------------------------------------------------------
+			[d]epósito
+			[s]aque
+			[e]xtrato
+			[c]riar conta cliente
+			criar c[o]nta corrente
+			sai[r]
+-----------------------------------------------------------------
 '''
+
 x = True
 deposito = []
 saque = []
@@ -82,6 +82,21 @@ while x:
 	question = input('para consultar o menu digite "m".')
 	if question == 'm':
 		print(menu)
+	
+	if question == 'd':
+		deposito()
+
+	if question == 's':
+		saque()
+	
+	if question == 'e':
+		extrato()
+
+	if question == 'c':
+		criar_conta_cliente()
+	
+	if question == 'o':
+		criar_conta_corrente()
 					
 	elif question == 'i':
 		print("saindo...")
