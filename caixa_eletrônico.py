@@ -22,10 +22,11 @@ extrato = {'deposito': [], 'saque': []}
 saldo_total = 1000
 LIMITE_DIARIO = 3
 contas_users = [0,]
-contas_correntes = []
+# contas_correntes = []
 agencia = '0001'
 num_conta = 1
-cpfs_cadastrados_contas = []
+cpfs_cadastrados_contas_user = []
+contas_correntes_cadastradas = {}
 
 # test output
 # print(f'Deposito:{deposito}, Saque: {saque}, Extrato: {extrato}, Saldo Total: {saldo_total}, Limite Diário {LIMITE_DIARIO}\n')
@@ -117,34 +118,51 @@ def criar_conta_user():
 					'estado': input('Estado(Ex.: SP, RJ, ES.): ')}}
 	# endereco_id = f'Endereço: {endereco}'
 	
-	user = [nome, data_nascimento, int(n_cpf), endereco]
+	user = [nome, data_nascimento, n_cpf, endereco]
 	contas_users.append(user)
+	cpfs_cadastrados_contas_user.append(n_cpf)
 	print(contas_users)
 	# criar_conta_corrente()
 
+# Feito para a função criar_conta_corrente()
+def verificacao_conta_existente():
+	global contas_correntes, num_conta, agencia, cpfs_cadastrados_contas_user, contas_correntes_cadastradas
+
+	cpf_id = input('Por favor insira seu CPF (CPF cadastrado em conta de usuário):')
+
+	if cpf_id in contas_correntes_cadastradas.values():
+		return 'Encontramos uma conta corrente no seu CPF.'
+	
+	else:
+		for cpf in cpfs_cadastrados_contas_user:
+
+			if cpf_id == cpf:
+				contas_correntes_cadastradas[num_conta] = cpf_id
+				print(contas_correntes_cadastradas)
+				return '\n---------------------conta criada com sucesso!---------------------'
+				
+			
+			else:
+				return '---Não há CPF cadastrado em conta de usuários. Cadastro de usuário disponível---'
 
 
 
 
 def criar_conta_corrente():
-	global contas_users, contas_correntes, num_conta, agencia, cpfs_cadastrados_contas
 
 	print('\n----Para criação de uma nova conta corrente, por favor, insira os dados a seguir----')
-	cpf_id = int(input('Por favor insira seu CPF:'))
-	if cpf_id in cpfs_cadastrados_contas:
-		print('O seu CPF já tem cadastro em nosso sistema!')
-	else:
-		for user in contas_users:
-			# if contas_users[i[2]] == cpf_id:
-			if cpf_id == user[2]:
-				contas_correntes.append([agencia, num_conta, contas_users[num_conta]])
-				cpfs_cadastrados_contas.append(cpf_id)
+	print(verificacao_conta_existente())
 	
-	print(contas_correntes)
+
+def consultar_contas_corrente():
+	...
+
+
+	# print(contas_correntes)
 	
-	print('...Criando conta corrente...')
-	print(contas_correntes)
-	print('\n---------------------conta criada com sucesso!---------------------')
+	# print('...Criando conta corrente...')
+	# print(contas_correntes)
+	# print('\n---------------------conta criada com sucesso!---------------------')
 
 
 
